@@ -23,7 +23,6 @@ with open(election_csv, newline='') as csv_file:
     candidates = []
     votes_candidate = []
     percent_votes = []
-    max_votes = votes_candidate[0]
     max_index = 0
 
     print(f"Header: {csv_header}") 
@@ -45,9 +44,10 @@ with open(election_csv, newline='') as csv_file:
 
     for x in votes_candidate:
 
-        percentage = (x/votes_candidate) * 100
+        percentage = (x/ votes) * 100
+        percentage = round(percentage)
+        percentage = "%.3f%%" % percentage
         percent_votes.append(percentage)
-
 
     winner = max(votes_candidate)
     index = votes_candidate.index(winner)
